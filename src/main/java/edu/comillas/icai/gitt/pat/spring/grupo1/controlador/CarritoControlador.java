@@ -27,26 +27,23 @@ public class CarritoControlador {
         }
 
 
-//        @PostMapping("/api/contadores")
-//        @ResponseStatus(HttpStatus.CREATED)
-//        public ModeloContador crea(@RequestBody ModeloContador contadorNuevo) {
-//            contadores.put(contadorNuevo.nombre(), contadorNuevo);
-//            return contadorNuevo;
-//        }
-//
-//        @GetMapping("/api/contadores/{nombre}")
-//        public ModeloContador contador(@PathVariable String nombre) {
-//            return contadores.get(nombre);
-//        }
-//
-//        @PutMapping("/api/contadores/{nombre}/incremento/{incremento}")
-//        public ModeloContador incrementa(@PathVariable String nombre,
-//                                         @PathVariable Integer incremento) {
-//            ModeloContador contadorActual = contadores.get(nombre);
-//            ModeloContador contadorIncrementado =
-//                    new ModeloContador(nombre, contadorActual.valor() + incremento);
-//            contadores.put(nombre, contadorIncrementado);
-//            return contadorIncrementado;
-//        }
+    @GetMapping("/api/carrito/{idCarrito}")
+    public Carrito getCarrito(@PathVariable int idCarrito) {
+        return carritos.get(idCarrito);
+    }
+
+
+    @DeleteMapping ("/api/carrito/{idCarrito")
+    public void borrarCarrito(@PathVariable int idCarrito){
+        carritos.remove(idCarrito);
+    }
+
+
+    @PutMapping("/api/carrito/[idCarrito}")
+    public Carrito modificaCarrito(@PathVariable int idCarrito, @RequestBody Carrito carrito){
+        carritos.put(idCarrito, carrito);
+        return carrito;
+    }
+
 }
 
